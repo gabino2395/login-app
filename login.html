@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Logueo</title>
+</head>
+
+<body>
+    <form method="POST">
+        Usuario:
+        <input type="text" id="username" /><br />
+        Password :
+        <input type="text" id="pass" /><br />
+        <button id="button">Enviar!</button>
+    </form>
+</body>
+<script>
+    const btn = document.getElementById('button');
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('algo?')
+        const url = 'http://localhost:4000/login';
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('pass').value;
+        return fetch(url, {
+            port: 4000,
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
+    })
+</script>
+
+</html>
